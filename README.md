@@ -9,6 +9,9 @@ Teste de conhecimento da linguagem PHP com criação de um mini-framwork.
 
 # Rotas:
 /public => http://localhost
+
 /customer/show
+
 /customer/show/id => http://localhost/customer/show/1
+
 /customer/api/tipo_relatorio/limite/intervalo => http://localhost/customer/api/1/5/10

@@ -1,13 +1,13 @@
-# desafio_giver_php
+# Desafio giver php
 Teste de conhecimento da linguagem PHP com criação de um mini-framwork.
 
-Requisitos:
+# Requisitos:
 - Servidor Apache com XAMPP e PHP 8.1 ou PHP como servidor local
 - Banco de dados Mysql
 - PDO habilitado
 
 
-Rotas:
+# Rotas:
 /public => http://localhost
 /customer/show
 /customer/show/id => http://localhost/customer/show/1

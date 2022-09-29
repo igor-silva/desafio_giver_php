@@ -49,13 +49,16 @@ class Customer extends Controller
   {
 
     header('Access-Control-Allow-Origin: *');
+    header('Content-Type: application/json; charset=utf-8');
     $target_dir = "uploads/";
     $target_file = $_FILES["file"]["name"];
     $uploadOk = 1;
     $csvFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
     $dirFull = $target_dir.$target_file;
 
-    if(isset($_POST["submit"])) {
+    file_put_contents('log.txt', $target_file);
+
+    //if(isset($_POST["submit"])) {
 
         if (file_exists($target_file)) {
             unlink($dirFull);
@@ -67,41 +70,41 @@ class Customer extends Controller
         }*/
         
         if($csvFileType != "csv") {
-            echo "Desculpe, apenas arquivos CSV são permitidos.";
+            $msg = "Desculpe, apenas arquivos CSV são permitidos.";
+            echo $json = json_encode($msg, JSON_UNESCAPED_UNICODE);
             $uploadOk = 0;
         }
         
         if ($uploadOk == 0) {
-            echo "Desculpe, seu arquivo não foi carregado.";
+            $msg = "Desculpe, seu arquivo não foi carregado.";
+            echo $json = json_encode($msg, JSON_UNESCAPED_UNICODE);
         } else {
             if (move_uploaded_file($_FILES["file"]["tmp_name"], "uploads/".$target_file)) {
-
-              echo "O arquivo ". htmlspecialchars( basename( $_FILES["file"]["name"])). " foi carregado. <br> ";
-
               $rows = array_map('str_getcsv', file($dirFull));
               $header = array_shift($rows);
               $csv = array();
+
               foreach ($rows as $row) {
                 $csv[] = array_combine($header, $row);
               }
 
-          
               if (count($csv) > 0) {
                 $Customers = $this->model('Customers');
                 $insert = $Customers::insertCsvData($dirFull);
-                $this->view('customer/insert');
-              } else {
-                $this->pageNotFound();
-              }
+                //$this->view('customer/insert');
+                $msg = 'Dados importados!';
+                echo $json = json_encode($msg, JSON_UNESCAPED_UNICODE);
+              } 
 
               
             } else {
-                echo "Desculpe, ocorreu um erro ao enviar seu arquivo. Error: ".$_FILES["file"]["error"];
+                $msg = "Desculpe, ocorreu um erro ao enviar seu arquivo. Error: ".$_FILES["file"]["error"];
+                echo $json = json_encode($msg, JSON_UNESCAPED_UNICODE);
             }
         }
            
       
-    }
+    //}
 
   }
 

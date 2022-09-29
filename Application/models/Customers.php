@@ -79,7 +79,7 @@ class Customers
           break;
       case '9': //Chart gender
         $whereCond = "1 GROUP BY gender HAVING count(*) > 0";
-        $fields = "gender, count(*) TOTAL_GENDER";
+        $fields = "gender GENDER, count(*) TOTAL_GENDER";
         break;
     }
 
@@ -113,8 +113,6 @@ class Customers
       $insertData =  $conn->executeInsert($sql,$dataCsv); 
       
       fclose($handle);
-
-      echo 'Dados importados!';
 
     } catch(PDOException $e) {
         die($e->getMessage());

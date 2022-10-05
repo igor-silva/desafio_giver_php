@@ -1,6 +1,6 @@
+<span>Connected</span>
 
-
-
+<!--
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -27,8 +27,9 @@
         </div>
       </div>
     </main>
-
+-->
     <!-- Modal -->
+    <!--
     <div class="modal fade" id="dialodImpCSV" tabindex="-1" aria-labelledby="dialodImpCSVLabel" aria-hidden="true">
       <div class="modal-dialog">
         <form enctype="multipart/form-data" action="customer/insert" method="POST">
@@ -55,3 +56,4 @@
   
   </body>
 </html>
+-->

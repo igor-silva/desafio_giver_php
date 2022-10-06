@@ -1,4 +1,10 @@
 <?php
+  header('Access-Control-Allow-Origin: *');
+  header('Access-Control-Allow-Methods: POST, GET, PUT, PATCH, DELETE, OPTIONS');
+  header('Access-Control-Allow-Headers: *');
+  if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+      exit(0);
+  }
 
 use Application\core\Controller;
 
@@ -37,8 +43,7 @@ class Customer extends Controller
   {
     $Customers = $this->model('Customers'); // é retornado o model Customers()
     $data = $Customers::findWhere($type_report, $limit, $offset);
-   // $this->view('customer/api', ['customers' => $data]);
-    header('Access-Control-Allow-Origin: *');
+    // $this->view('customer/api', ['customers' => $data]);
     header('Content-Type: application/json; charset=utf-8');
     echo $json = json_encode($data, JSON_UNESCAPED_UNICODE);
   
@@ -47,8 +52,6 @@ class Customer extends Controller
 
   public function insert()
   {
-
-    header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json; charset=utf-8');
     $target_dir = "uploads/";
     $target_file = $_FILES["file"]["name"];

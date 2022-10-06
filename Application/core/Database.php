@@ -6,10 +6,10 @@ use PDO;
 class Database extends PDO
 {
   // configuração do banco de dados
-  private $DB_NAME = 'giver';
-  private $DB_USER = 'root';
-  private $DB_PASSWORD = '';
-  private $DB_HOST = 'localhost';
+  private $DB_NAME = 'epiz_32732313_giver';
+  private $DB_USER = 'epiz_32732313';
+  private $DB_PASSWORD = 'kp5P2soLjrvw';
+  private $DB_HOST = 'sql302.epizy.com';
   //private $DB_PORT = 5432;
 
   // armazena a conexão
